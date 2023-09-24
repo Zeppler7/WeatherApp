@@ -1,0 +1,605 @@
+
+/*adding background to section
+and animation named color-change*/
+section.rainy {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    
+    background-size: cover;
+    background-position: center;
+    animation: color-change 10s linear infinite;
+    animation-delay: 1s;
+}
+/*adding rain img and making opacity 0*/
+section.rainy:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(
+https://media.geeksforgeeks.org/wp-content/uploads/20200828184719/rain-300x300.png);
+    animation: rain 0.4s linear infinite;
+    opacity: 0;
+}
+/* just changing the position of image
+of rain using keyframes*/
+@keyframes rain {
+    0% {
+        background-position: 0 0;
+        opacity: 1;
+    }
+
+    100% {
+        background-position: 8% 80%;
+        opacity: 1;
+    }
+}
+/* applying filter at different angle
+on different interval using keyframe*/
+@keyframes color-change {
+    0% {
+        filter: hue-rotate(0deg);
+    }
+    50% {
+        filter: hue-rotate(0deg);
+    }
+    100% {
+        filter: hue-rotate(360deg);
+    }
+}
+
+  section.cloudy{
+    background-color: #007ced;
+    background: linear-gradient(to bottom, #007ced 1%,#cce7ff 100%);
+  }
+  #cloud-intro{
+    position: relative;
+    height: 100%;
+    background: url(https://static.radulescu.me/examples/clouds/clouds1000.png);
+    background: url(https://static.radulescu.me/examples/clouds/clouds1000.png) 0 200px,
+                url(https://static.radulescu.me/examples/clouds/clouds1200_1.png) 0 300px,
+                url(https://static.radulescu.me/examples/clouds/clouds1000_blur3.png) 100px 250px;
+    animation: wind 20s linear infinite;
+  }
+  @keyframes wind{  
+    0% {
+      background-position: 0 200px, 0 300px, 100px 250px;
+    }
+    100% {
+      background-position: 1000px 200px, 1200px 300px, 1100px 250px;
+    }
+  
+  }
+
+    
+  
+    /* ---------- Fog ---------- */
+    .fogwrapper {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      -webkit-filter: blur(1px) grayscale(0.2) saturate(1.2) sepia(0.2);
+      filter: blur(1px) grayscale(0.2) saturate(1.2) sepia(0.2);
+    }
+  
+    #foglayer_01,
+    #foglayer_02,
+    #foglayer_03 {
+      height: 100%;
+      position: absolute;
+      width: 100%;
+    }
+  
+    #foglayer_01 .image01,
+    #foglayer_01 .image02,
+    #foglayer_02 .image01,
+    #foglayer_02 .image02,
+    #foglayer_03 .image01,
+    #foglayer_03 .image02 {
+      float: left;
+      height: 100%;
+      width: 50%;
+    }
+  
+    #foglayer_01 {
+      -webkit-animation: foglayer_01_opacity 10s linear infinite, foglayer_moveme 15s linear infinite;
+      -moz-animation: foglayer_01_opacity 10s linear infinite, foglayer_moveme 15s linear infinite;
+      animation: foglayer_01_opacity 10s linear infinite, foglayer_moveme 15s linear infinite;
+    }
+  
+    #foglayer_02,
+    #foglayer_03 {
+      -webkit-animation: foglayer_02_opacity 21s linear infinite, foglayer_moveme 13s linear infinite;
+      -moz-animation: foglayer_02_opacity 21s linear infinite, foglayer_moveme 13s linear infinite;
+      animation: foglayer_02_opacity 21s linear infinite, foglayer_moveme 13s linear infinite;
+    }
+  
+    /* ---------- Moving Fog ---------- */
+    /*
+    'size: cover' || 'size: 100%'; results remain the same
+    'attachment: scroll' can be added or removed; results remain the same
+    'attachment: fixed' causing unexpected results in Chrome
+    'repeat-x' || 'no-repeat'; results remain the same
+  */
+    #foglayer_01 .image01,
+    #foglayer_01 .image02 {
+      background: url("https://raw.githubusercontent.com/danielstuart14/CSS_FOG_ANIMATION/master/fog1.png") center center/cover no-repeat transparent;
+    }
+  
+    #foglayer_02 .image01,
+    #foglayer_02 .image02,
+    #foglayer_03 .image01,
+    #foglayer_03 .image02 {
+      background: url("https://raw.githubusercontent.com/danielstuart14/CSS_FOG_ANIMATION/master/fog2.png") center center/cover no-repeat transparent;
+    }
+  
+    /* ---------- Keyframe Layer 1 ---------- */
+    @-webkit-keyframes foglayer_01_opacity {
+      0% {
+        opacity: .1;
+      }
+  
+      22% {
+        opacity: .5;
+      }
+  
+      40% {
+        opacity: .28;
+      }
+  
+      58% {
+        opacity: .4;
+      }
+  
+      80% {
+        opacity: .16;
+      }
+  
+      100% {
+        opacity: .1;
+      }
+    }
+  
+    @-moz-keyframes foglayer_01_opacity {
+      0% {
+        opacity: .1;
+      }
+  
+      22% {
+        opacity: .5;
+      }
+  
+      40% {
+        opacity: .28;
+      }
+  
+      58% {
+        opacity: .4;
+      }
+  
+      80% {
+        opacity: .16;
+      }
+  
+      100% {
+        opacity: .1;
+      }
+    }
+  
+    @-o-keyframes foglayer_01_opacity {
+      0% {
+        opacity: .1;
+      }
+  
+      22% {
+        opacity: .5;
+      }
+  
+      40% {
+        opacity: .28;
+      }
+  
+      58% {
+        opacity: .4;
+      }
+  
+      80% {
+        opacity: .16;
+      }
+  
+      100% {
+        opacity: .1;
+      }
+    }
+  
+    @keyframes foglayer_01_opacity {
+      0% {
+        opacity: .1;
+      }
+  
+      22% {
+        opacity: .5;
+      }
+  
+      40% {
+        opacity: .28;
+      }
+  
+      58% {
+        opacity: .4;
+      }
+  
+      80% {
+        opacity: .16;
+      }
+  
+      100% {
+        opacity: .1;
+      }
+    }
+  
+    /* ---------- Keyframe Layer 2 ---------- */
+    @-webkit-keyframes foglayer_02_opacity {
+      0% {
+        opacity: .5;
+      }
+  
+      25% {
+        opacity: .2;
+      }
+  
+      50% {
+        opacity: .1;
+      }
+  
+      80% {
+        opacity: .3;
+      }
+  
+      100% {
+        opacity: .5;
+      }
+    }
+  
+    @-moz-keyframes foglayer_02_opacity {
+      0% {
+        opacity: .5;
+      }
+  
+      25% {
+        opacity: .2;
+      }
+  
+      50% {
+        opacity: .1;
+      }
+  
+      80% {
+        opacity: .3;
+      }
+  
+      100% {
+        opacity: .5;
+      }
+    }
+  
+    @-o-keyframes foglayer_02_opacity {
+      0% {
+        opacity: .5;
+      }
+  
+      25% {
+        opacity: .2;
+      }
+  
+      50% {
+        opacity: .1;
+      }
+  
+      80% {
+        opacity: .3;
+      }
+  
+      100% {
+        opacity: .5;
+      }
+    }
+  
+    @keyframes foglayer_02_opacity {
+      0% {
+        opacity: .5;
+      }
+  
+      25% {
+        opacity: .2;
+      }
+  
+      50% {
+        opacity: .1;
+      }
+  
+      80% {
+        opacity: .3;
+      }
+  
+      100% {
+        opacity: .5;
+      }
+    }
+  
+    /* ---------- Keyframe Layer 3 ---------- */
+    @-webkit-keyframes foglayer_03_opacity {
+      0% {
+        opacity: .8
+      }
+  
+      27% {
+        opacity: .2;
+      }
+  
+      52% {
+        opacity: .6;
+      }
+  
+      68% {
+        opacity: .3;
+      }
+  
+      100% {
+        opacity: .8;
+      }
+    }
+  
+    @-moz-keyframes foglayer_03_opacity {
+      0% {
+        opacity: .8
+      }
+  
+      27% {
+        opacity: .2;
+      }
+  
+      52% {
+        opacity: .6;
+      }
+  
+      68% {
+        opacity: .3;
+      }
+  
+      100% {
+        opacity: .8;
+      }
+    }
+  
+    @-o-keyframes foglayer_03_opacity {
+      0% {
+        opacity: .8
+      }
+  
+      27% {
+        opacity: .2;
+      }
+  
+      52% {
+        opacity: .6;
+      }
+  
+      68% {
+        opacity: .3;
+      }
+  
+      100% {
+        opacity: .8;
+      }
+    }
+  
+    @keyframes foglayer_03_opacity {
+      0% {
+        opacity: .8;
+      }
+  
+      27% {
+        opacity: .2;
+      }
+  
+      52% {
+        opacity: .6;
+      }
+  
+      68% {
+        opacity: .3;
+      }
+  
+      100% {
+        opacity: .8;
+      }
+    }
+  
+    /* ---------- Keyframe moveMe ---------- */
+    @-webkit-keyframes foglayer_moveme {
+      0% {
+        left: 0;
+      }
+  
+      100% {
+        left: -100%;
+      }
+    }
+  
+    @-moz-keyframes foglayer_moveme {
+      0% {
+        left: 0;
+      }
+  
+      100% {
+        left: -100%;
+      }
+    }
+  
+    @-o-keyframes foglayer_moveme {
+      0% {
+        left: 0;
+      }
+  
+      100% {
+        left: -100%;
+      }
+    }
+  
+    @keyframes foglayer_moveme {
+      0% {
+        left: 0;
+      }
+  
+      100% {
+        left: -100%;
+      }
+    }
+  
+    @media only screen and (min-width: 280px) and (max-width: 767px) {
+  
+      #foglayer_01 .image01,
+      #foglayer_01 .image02,
+      #foglayer_02 .image01,
+      #foglayer_02 .image02,
+      #foglayer_03 .image01,
+      #foglayer_03 .image02 {
+        width: 100%;
+      }
+    }
+
+        body {
+          background: #2EB5E5;
+        }
+    
+        .sun {
+          position: absolute;
+          top: 0;
+          left: 110px;
+          bottom: 450px;
+          margin: auto;
+          width: 70px;
+          height: 70px;
+          border-radius: 50%;
+          background: white;
+          opacity: 0.9;
+          box-shadow: 0px 0px 40px 15px white;
+        }
+    
+        .ray_box {
+          position: absolute;
+          margin: auto;
+          top: 0px;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          width: 70px;
+          -webkit-animation: ray_anim 120s linear infinite;
+          animation: ray_anim 120s linear infinite;
+        }
+    
+        .ray {
+          background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.8) 50%, rgba(255, 255, 255, 0) 100%);
+          background: linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.8) 50%, rgba(255, 255, 255, 0) 100%);
+          margin-left: 10px;
+          border-radius: 80% 80% 0 0;
+          position: absolute;
+          opacity: 0.1;
+        }
+    
+        .ray1 {
+          height: 170px;
+          width: 30px;
+          transform: rotate(180deg);
+          top: -175px;
+          left: 15px;
+        }
+    
+        .ray2 {
+          height: 100px;
+          width: 8px;
+          transform: rotate(220deg);
+          top: -90px;
+          left: 75px;
+        }
+    
+        .ray3 {
+          height: 170px;
+          width: 50px;
+          transform: rotate(250deg);
+          top: -80px;
+          left: 100px;
+        }
+    
+        .ray4 {
+          height: 120px;
+          width: 14px;
+          transform: rotate(305deg);
+          top: 30px;
+          left: 100px;
+        }
+    
+        .ray5 {
+          height: 140px;
+          width: 30px;
+          transform: rotate(-15deg);
+          top: 60px;
+          left: 40px;
+        }
+    
+        .ray6 {
+          height: 90px;
+          width: 50px;
+          transform: rotate(30deg);
+          top: 60px;
+          left: -40px;
+        }
+    
+        .ray7 {
+          height: 180px;
+          width: 10px;
+          transform: rotate(70deg);
+          top: -35px;
+          left: -40px;
+        }
+    
+        .ray8 {
+          height: 120px;
+          width: 30px;
+          transform: rotate(100deg);
+          top: -45px;
+          left: -90px;
+        }
+    
+        .ray9 {
+          height: 80px;
+          width: 10px;
+          transform: rotate(120deg);
+          top: -65px;
+          left: -60px;
+        }
+    
+        .ray10 {
+          height: 190px;
+          width: 23px;
+          transform: rotate(150deg);
+          top: -185px;
+          left: -60px;
+        }
+    
+    
+        @keyframes ray_anim {
+          0% {
+            transform: rotate(0deg);
+            transform: rotate(0deg);
+          }
+    
+          100% {
+            transform: rotate(360deg);
+            transform: rotate(360deg);
+          }
+        }

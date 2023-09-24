@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.3.1/cerulean/bootstrap.min.css" integrity="sha512-uYdFW1wYPUqMECgTumIJgmAh/sHPOKHY6RBhItyI46XW/uJIiS/l6hsSPDrpnDxTlpj6/9gJIzyO0c3+1iwBfA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="{% static 'CSS/weather_bound.css' %}">
+        <title>WeatherApp</title>
+    </head>
+    <body class="{% if 'Clouds' in weather_data.main  %}cloudy{% elif 'Rain' in weather_data.main %}rainy{% elif 'Mist' in weather_data.main %}misty{% endif %}">
+        <section class="{% if 'Clouds' in weather_data.main  %}cloudy{% elif 'Rain' in weather_data.main %}rainy{% endif %}">
+            <div id="{% if 'Clouds' in weather_data.main  %}cloud-intro{% endif %}">
+            {% if 'Mist' in weather_data.main %}
+            <style>
+                body {
+                    background: black;
+                }
+            </style>
+            <div id="foglayer_01" class="fog">
+                <div class="image01"></div>
+                <div class="image02"></div>
+            </div>
+            <div id="foglayer_02" class="fog">
+                <div class="image01"></div>
+                <div class="image02"></div>
+            </div>
+            <div id="foglayer_03" class="fog">
+                <div class="image01"></div>
+                <div class="image02"></div>
+            </div>
+            {% endif %}
+            {% if 'Clear' in weather_data.main%}
+            <div class="sun">
+                <div class="ray_box">
+                    <div class="ray ray1"></div>
+                    <div class="ray ray2"></div>
+                    <div class="ray ray3"></div>
+                    <div class="ray ray4"></div>
+                    <div class="ray ray5"></div>
+                    <div class="ray ray6"></div>
+                    <div class="ray ray7"></div>
+                    <div class="ray ray8"></div>
+                    <div class="ray ray9"></div>
+                    <div class="ray ray10"></div>
+                </div>
+            </div>
+            {% endif %}
+            <div class="navbar navbar-expand-g fixed-top navbar-dark bg-dark">
+                <div class="container">
+                    <a href="../" class="navbar-brand">Weather App <span style="color: aqua;">
+                            <strong> - Django
+                                Frameworrk</strong>
+                        </span></a>
+                    <a href="https://openweathermap.org" class="navbar-tech">OpenWeather - Get your API</a>
+                </div>
+            </div>
+
+            <br><br><br><br><br><br>
+            <div id="jumbotron" class="jumbotron" style="text-align: center; margin-top: -50px;">
+                <h1 class="display-5" style="color:white"> Weather Desktop App</h1>
+                <h5 style="color:white">Using Python and Django framework</h5>
+
+                <img src="{% static 'images/weather.png' %}" class="image" alt="Weather" style="width: 100px; margin-bottom:-50px;">
+            </div>
+            <br><br><br>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-primary" style="width:60%;margin:0 0 0 300px; padding: 10px 10px 10px 10px;border-radius:10px 10px 10px 10px;">
+                <form method="post" class="col-md">
+                    {% csrf_token %}
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="city" placeholder="Choose Your City ...">
+                        <div class="input-group-btn">
+                            <button type="submit" class="btn btn-primary">Search</button>
+                        </div>
+                    </div>
+                </form>
+            </nav>
+            <br> <br>
+
+            <div class="col d-flex justify-content-center">
+                <div class="card text-white bg-secondary mb-6">
+                    <div class="card-body">
+                        <h4><span class="badge bg-primary">City Name :</span> {{weather_data.city_name}}</h4>
+                        <h4><span class="badge bg-primary">Country Code :</span> {{weather_data.country_code}}</h4>
+                        <h4><span class="badge bg-primary">Coordinates :</span> {{weather_data.coordinates}}</h4>
+                        <h4><span class="badge bg-primary">Temperature in Celcius :</span> {{weather_data.temp}}</h4>
+                        <h4><span class="badge bg-primary">Pressure :</span> {{weather_data.pressure}}</h4>
+                        <h4><span class="badge bg-primary">Humidity :</span> {{weather_data.humidity}}%</h4>
+                        <h4><span class="badge bg-primary">Forecast :</span> {{weather_data.main}} <img src="http://openweathermap.org/img/w/{{weather_data.icon}}.png" alt="Weather" style="width: 70px;"></h4>
+                        <h4><span class="badge bg-primary">Description :</span> {{weather_data.description}}</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>
